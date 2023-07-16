@@ -1,0 +1,24 @@
+.bton{
+    display: inline;
+}
+
+#well-custom{
+    background-color:#f3f2f3;
+    
+}
+
+.info {
+    background-color: aqua;
+    padding: 20px;
+}
+
+.post {
+    background-color: blue;
+}
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%
+    text-align: center;
+ }

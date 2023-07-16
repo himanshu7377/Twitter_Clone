@@ -1,0 +1,62 @@
+<%- include('partials/header'); -%>
+<div class="container" style="padding-bottom: 2.5em;">
+    <div class="row">
+        <div class="col-sm-4 col-md-4 info">
+            <h1 style="text-align: center; color: black;"> <%= user.name %>'s Profile </h1>
+            <div class="card text-white bg-dark" style="width:100%; margin-bottom: 10px;">
+                <div class="card-header">
+                    Profile
+                </div>
+                <ul class="list-group text-dark list-group-flush">
+                    <li class="list-group-item"> <strong>Name</strong> : <%= user.name %></li>  
+                    <li class="list-group-item"><strong>Username</strong>: <%= user.username %></li>  
+                    <li class="list-group-item"><strong>Email</strong>  : <%= user.email %></li>  
+                </ul>
+            </div>
+            
+            <div class="card text-white bg-dark" style="width:100%; margin-bottom: 10px;">
+                <div class="card-header">
+                    Followers (<%= user.followers.length %>)
+                </div>
+                <ul class="list-group list-group-flush">
+                  <% user.followers.forEach(function(data){%>
+                    <li class="list-group-item"><a href="/profile/<%=data.name%>"><%= data.name%></a></li>  
+                  <%})%>
+                </ul>
+            </div>
+              
+            <div class="card text-white bg-dark" style="width:100%;">
+                <div class="card-header">
+                    Following (<%= user.following.length %>)
+                </div>
+                <ul class="list-group list-group-flush">
+                  <% user.following.forEach(function(data){%>
+                    <li class="list-group-item"><a href="/profile/<%= data.name%>"><%= data.name%></a></li>  
+                  <%})%>
+                </ul>
+              </div>
+        </div>
+
+        <div class="col-sm-8 col-md-8 post">
+            <h1 style="text-align: center; color: azure;"> <%= user.name %>'s Posts (<%=user.posts.length%>) </h1>
+            <%posts.forEach(function(post){%>
+            <div class="card text-white bg-dark" style="margin-bottom: 10px;">
+                <div class="card-header">
+                    Post
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p><%= post.text%></p>
+                        <footer class="blockquote-footer"> 
+                            <%=moment(post.Created).fromNow()%> 
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+
+<%- include('partials/footer'); -%>
